@@ -1,6 +1,7 @@
 ## Run
 
-From the `hello-world-node` directory:
+From the `hello-world-node` directory: 
+''''sh
 
 ```sh
 npm start
