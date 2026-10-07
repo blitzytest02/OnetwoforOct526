@@ -8,19 +8,19 @@ This project adds `hello-world-node/`, a dependency-free Node.js HTTP server for
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"pie1":"#5B39F3","pie2":"#FFFFFF","pieStrokeColor":"#B23AF2","pieOuterStrokeColor":"#B23AF2","pieSectionTextColor":"#B23AF2","pieTitleTextColor":"#B23AF2"}}}%%
-pie showData title 75% Complete
-    "Completed Work" : 18
+pie showData title 76% Complete
+    "Completed Work" : 19
     "Remaining Work" : 6
 ```
 
 | Metric | Value |
 |---|---|
-| Total Hours | 24 |
-| Completed Hours (AI + Manual) | 18 (18 AI + 0 manual) |
+| Total Hours | 25 |
+| Completed Hours (AI + Manual) | 19 (19 AI + 0 manual) |
 | Remaining Hours | 6 |
-| Percent Complete | **75%** |
+| Percent Complete | **76%** |
 
-18 completed hours ÷ 24 total hours = **75% complete**. Every AAP-specified deliverable is done. The 6 remaining hours are path-to-production work.
+19 completed hours ÷ 25 total hours = **76% complete**. Every AAP-specified deliverable is done. The 6 remaining hours are path-to-production work.
 
 ## 1.3 Key Accomplishments
 
@@ -29,27 +29,27 @@ pie showData title 75% Complete
 - ✅ Malformed, oversized, `CONNECT` and unsupported-`Expect` requests get Node's defaults, and the server keeps serving
 - ✅ `PORT` defaults to `3000` and can be overridden (`8080`). The exact startup log line follows npm's banner
 - ✅ `package.json` is byte-identical to the user's JSON, and nothing is installed
-- ✅ Every README command produces exactly its stated output
-- ✅ All nine Definition of Done checks and all nine supplementary checks pass on Node v20.20.2 (36 of 36 assertions, in two runs)
+- ✅ `README.md` matches the specified content byte for byte, and every command produces exactly its stated output
+- ✅ All nine Definition of Done checks and all nine supplementary checks pass on Node v20.20.2 (27 of 27 gate assertions)
 - ✅ `index.js` is 10 lines, lines 4/7/10 are verbatim, and it has no forbidden constructs
 
 ## 1.4 Critical Unresolved Issues
 
-**0 of 12** AAP requirements (R1–R12) are open. Three items remain: two are accepted with a caveat, and one is a pending merge. None of them blocks local tutorial use. Item 1 blocks wider exposure (Section 5.2, D1).
+**0 of 12** AAP requirements (R1–R12) are open, and the one refine request is delivered. Three items remain: two accepted with a caveat and one pending merge. None blocks local tutorial use; item 1 blocks wider exposure (Section 5.2, D1).
 
 | Issue | Impact | Owner | ETA |
 |---|---|---|---|
 | The verified runtime, Node v20.20.2, has been end-of-life since 2026-04-30. It carries 23 post-EOL CVEs with no 20.x fix, and its bundled llhttp 9.3.1 lacks the 9.4.2/9.4.3 parser fixes (accepted under the AAP 0.3.1 pin) | Security exposure if the server is reachable beyond a local tutorial | Platform / DevOps | 2 h |
 | Node-default parser behaviours: pipelined or mis-framed requests can lose later responses, or get a `404` before Node's `400` (accepted, since the AAP keeps Node defaults) | Possible desync behind a non-validating proxy. The server never crashes | DevOps | 2 h (deployment controls) |
-| The project is on branch `blitzy-12aed985-76eb-4264-9349-84a90c6db706`, and `main` is still at `0e301a6` | The deliverable is absent from `main` until merged | Repository owner | 1 h |
+| The project is on branch `blitzy-12aed985-76eb-4264-9349-84a90c6db706`, open as pull request #1. It merges into `main` (`1cd5ea5`) without conflicts. The README restoration needs confirming at review (Section 5.2, D4 and D6) | The deliverable is absent from `main` until merged | Repository owner | 1 h |
 
 ## 1.5 Access Issues
 
-No access issues identified. The branch is pushed to `origin`, Node v20.20.2 is installed, and the project needs no credentials or external services.
+No access issues identified. The branch is pushed to `origin` and open as pull request #1, Node v20.20.2 is installed, and the project needs no credentials or external services.
 
 ## 1.6 Recommended Next Steps
 
-1. [High] Review and merge this branch into `main`.
+1. [High] Review pull request #1, confirm the restored `hello-world-node/README.md` (Section 5.2, D6), and merge it into `main`.
 2. [High] Re-run the Definition of Done on a maintained Node LTS (22.x/24.x), and adopt it for anything beyond the tutorial.
 3. [Medium] If the server is exposed off-host, put it behind a TLS-terminating, request-validating reverse proxy that adds security headers, or restrict it to loopback.
 4. [Medium] Write a supervision runbook: start from `hello-world-node/`, stop the whole process group, and pin Node on `PATH`.
@@ -69,13 +69,14 @@ No access issues identified. The branch is pushed to `origin`, Node v20.20.2 is 
 | Security and performance validation | 3.5 | Path/query injection, prototype-key lookups, smuggling and header attacks, DoS probes, information disclosure, browser rendering, and latency/concurrency under load. R7, AAP 0.6 |
 | Runtime support and API-currency research | 2 | Node 20 support status, releases, CVE and llhttp applicability. Also confirmed that `createServer`/`writeHead().end()`/`listen` is current and not deprecated (AAP 0.2.2, 0.3.1) |
 | Static compliance review | 1.5 | Manifest bytes, verbatim lines 4/7/10, forbidden-construct scan, three-file composition, root `README.md` and branch `One` untouched, and the user-rule count. R1, R8, R10, R13, R14 |
-| **Total** | **18** | |
+| README conformance pass (refine request) | 1 | `hello-world-node/README.md` restored to the AAP 0.2.3 bytes (commit `c6389dd`), the other files confirmed byte-identical by blob hash, then the full acceptance gate, regression probes and browser view re-run. R9, R11 |
+| **Total** | **19** | |
 
 ## 2.2 Remaining Work Detail
 
 | Category | Hours | Priority |
 |---|---|---|
-| Code review and merge of the branch into `main` (closes the AAP 0.2.1 branch placement) | 1 | High |
+| Code review and merge of pull request #1 into `main`, including confirmation of the README restoration (closes D4 and D6) | 1 | High |
 | Runtime currency: run the full gate on a maintained Node LTS (22.x/24.x) and adopt it for use beyond the tutorial. No file change is needed | 2 | High |
 | Deployment isolation and edge hardening: TLS-terminating, request-validating reverse proxy with security headers, or loopback/firewall restriction | 2 | Medium |
 | Process-supervision runbook: whole-group stop, runtime on `PATH`, `PORT`, restart policy | 1 | Medium |
@@ -85,35 +86,37 @@ No access issues identified. The branch is pushed to `origin`, Node v20.20.2 is 
 
 | Item | Hours |
 |---|---|
-| Completed (Section 2.1) | 18 |
+| Completed (Section 2.1) | 19 |
 | Remaining (Section 2.2) | 6 |
-| **Total project hours** | **24** |
-| Completion | 18 ÷ 24 = **75%** |
+| **Total project hours** | **25** |
+| Completion | 19 ÷ 25 = **76%** |
 
 Confidence is high for the completed items, which are fully specified by the AAP and verified at runtime. It is medium for the remaining deployment items, because the target hosting environment is not defined.
 
 # 3. Test Results
 
-The AAP excludes automated test files, so this project has no unit-test framework and no code-coverage tooling. The checks below are scripted acceptance runs against the live server on Node v20.20.2 / npm 10.8.2. Each server ran in a private network namespace, so the literal ports `3000` and `8080` were used. The acceptance gate ran twice, and both runs gave identical results.
+The AAP excludes automated test files, so this project has no unit-test framework and no code-coverage tooling. The checks below are scripted acceptance runs against the live server on Node v20.20.2 / npm 10.8.2, plus static checks of the three files. Each server ran in a private network namespace, so the literal ports `3000` and `8080` were used. The acceptance gate ran in 6.3 s.
 
 | Area / Category | Framework | Tests | Passed | Failed | Coverage | What This Proves |
 |---|---|---|---|---|---|---|
-| Definition of Done checks 1–9 (AAP 0.5.2) | bash + `curl` + `nc`, `setsid` lifecycle | 24 assertions | 24 | 0 | 9 of 9 checks | The server starts with the exact log line, serves `/hello`, honours `PORT`, matches its README, rejects bad input and stays up, and is 10 lines long |
-| Supplementary contract checks (AAP 0.5.2 table) | bash + `curl` + `nc` | 12 assertions | 12 | 0 | 9 of 9 rows | Query strings, trailing slash, `HEAD`, ignored bodies, encoded paths, minimal headers, missing `Host`, invalid headers and unsupported `Expect` all behave as contracted |
-| Edge and hygiene probes | bash + `curl` + `nc` | 10 assertions | 10 | 0 | — | 16 KiB limit (`404` at 15,000 characters, `431` at 17,000), prototype keys `404`, `CONNECT` closed, one startup line, clean group stop, no lockfile or `node_modules`, exactly 3 files |
-| Concurrency | `xargs -P 50` + `curl` | 1 run (2,000 requests) | 2,000 | 0 | 50 concurrent | Mixed hits and misses under concurrency all return the correct status, with no errors or resets |
-| Hostile raw payloads | `printf` + `nc` | 8 payloads | 8 | 0 | — | Garbage, bad versions, lowercase methods, `constructor`, bad `Content-Length`, bad chunking, NUL and truncated requests never crash the process. The same PID serves `/hello` after each one |
-| Static validation | `node --check`, `JSON.parse`, `cmp`, `grep`, `wc` | 13 checks | 13 | 0 | 3 of 3 files | Syntax is valid, the manifest is byte-identical to the user's JSON, lines 4/7/10 are verbatim, there are no forbidden constructs, blank lines or CRs, and the README has exactly two headings |
+| Definition of Done checks 1–9 (AAP 0.5.2) | bash + `curl` + `nc`, `setsid` lifecycle | 14 assertions | 14 | 0 | 9 of 9 checks | The server starts with the exact log line, serves `/hello`, honours `PORT`, matches every README command and statement, rejects bad input and stays up, and is 10 lines long |
+| Supplementary contract checks (AAP 0.5.2 table) | bash + `curl` + `nc` | 10 assertions | 10 | 0 | 9 of 9 rows | Query strings, trailing slash, `HEAD`, ignored bodies, encoded paths, minimal headers, missing `Host`, invalid headers and unsupported `Expect` all behave as contracted |
+| Lifecycle and hygiene | bash + `ss` + `git` | 6 assertions | 6 | 0 | — | The startup line prints once, a group stop frees the port, the log has no error text, and no lockfile, `node_modules` or worktree change is left behind |
+| Edge probes | `curl` + `nc` | 7 assertions | 7 | 0 | — | 16 KiB limit (`404` at 15,000 characters, `431` at 17,000, server still up), prototype keys `404`, `CONNECT` closed with 0 bytes, `Expect: 100-continue` gives `100` then `200`, bodies are 11 and 9 bytes |
+| Hostile raw payloads | `printf` + `nc` | 8 payloads | 8 | 0 | — | Garbage, `HTTP/9`, lowercase method, `constructor` method, bad `Content-Length`, bad chunking, NUL and truncated requests never crash the process. The same PID serves `/hello` after each one |
+| Concurrency | `xargs -P 50` + `curl` | 1 run (2,000 requests) | 2,000 | 0 | 50 concurrent | Mixed hits and misses under concurrency all return the correct status |
+| Static validation | `node --check`, `JSON.parse`, `cmp`, `git hash-object`, `grep`, `wc` | 13 checks | 13 | 0 | 3 of 3 files | Syntax is valid, the manifest and README are byte-identical to their specified content, lines 4/7/10 are verbatim, and there are no forbidden constructs, blank lines, comments or CRs |
+| Browser rendering | Headless Chrome | 3 pages | 3 | 0 | `/hello`, `/unknown`, script-tag path | Responses render as plain text only. No path is echoed, no dialog opens, and there are 0 scripts and 0 JavaScript errors |
 
-**Totals observed:** 67 assertions and checks, plus 2,000 load requests. 0 failures. The condensed Definition of Done script in Section 9.4 (15 assertions) was also run, and it printed `PASS=15 FAIL=0`.
+**Totals observed:** 58 assertions and checks, one 2,000-request load run and 3 browser pages, with 0 failures. The condensed Definition of Done script in Section 9.4 (15 assertions) was also run, and it printed `PASS=15 FAIL=0`.
 
 **Not Covered**
 
 - **No repeatable automated suite.** Verification is the scripted Definition of Done in Section 9.4 and the manual checks in Section 9.5. Nothing runs in CI, because the AAP excludes tests and CI workflows.
-- **Extension contract (R12).** No second route is committed, because "Feature Requests" reads "None yet". The one-line-addition shape has been shown only on a throwaway copy. Re-run the Definition of Done when the first feature route lands.
+- **Extension contract (R12).** No second route is committed, because "Feature Requests" reads "None yet", so the one-line route addition is unexercised. Re-run the Definition of Done when the first feature route lands.
+- **The merged `main`.** All runs used this branch. Re-run Section 9.4 on `main` after pull request #1 is merged.
 - **Other runtimes in the `engines` range.** Parser details such as the `431` limit, `417` and `CONNECT` closure were verified on v20.20.2 only. Re-run the checks on the production Node LTS before release.
-- **Shutdown under load.** No request was in flight when the server was stopped. Graceful shutdown is excluded by the AAP.
-- **Long-duration soak.** Hours-long memory and file-descriptor stability was not measured.
+- **Shutdown under load and long-duration soak.** No request was in flight when the server was stopped, and graceful shutdown is excluded by the AAP. Hours-long memory and file-descriptor stability was not measured.
 
 # 4. Runtime Validation & UI Verification
 
@@ -121,14 +124,14 @@ Every flow below was driven against the running server, started with `npm start`
 
 - ✅ **Startup and configuration.** Unset or empty `PORT` binds `3000`, and `PORT=8080` binds `8080`. The last line of output is exactly `Server listening on http://localhost:<port>`, after npm's `> hello-world-node@1.0.0 start` / `> node index.js` banner. It goes to stdout and is printed once, after the bind succeeds.
 - ✅ **Primary journey: `GET /hello`.** Returns `HTTP/1.1 200 OK`, `Content-Type: text/plain; charset=utf-8` and `Hello world` (11 bytes, no newline). Query strings give the same response.
-- ✅ **404 fallback.** `/unknown`, `POST /hello`, `//`, `//hello`, `/Hello`, `/hello/`, `/%68ello` and `/__proto__` all return `404` with `Not found` (9 bytes) and the same content type. `HEAD` returns `404` with headers and no body.
+- ✅ **404 fallback.** `/unknown`, `POST /hello`, `//`, `//hello`, `/Hello`, `/hello/`, `/%68ello`, `/__proto__` and `/constructor` all return `404` with `Not found` (9 bytes) and the same content type. `HEAD` returns `404` with headers and no body.
 - ✅ **Node-default rejection.** `GARBAGE`, `HTTP/1.1` without `Host`, and invalid headers get `400 Bad Request` with `Connection: close`. A 17,000-character path gets `431`, `Expect: unsupported` gets `417` with an empty body, and `CONNECT` is closed with no reply. `/hello` keeps answering after every one of these.
-- ✅ **README accuracy.** All three README commands, run exactly as written, produce the output the README states. `npm start` run from the repository root fails with npm `ENOENT`, which confirms that the README's directory line is required.
+- ✅ **README accuracy.** `hello-world-node/README.md` holds only its Run and Try it sections, with balanced `sh`/`text` fences and no stray text. All three of its commands, run exactly as written, produce the output it states, and the Try it `curl` works from any directory. `npm start` run from the repository root fails with npm `ENOENT`, which confirms that the README's directory line is required.
 - ✅ **Concurrency and performance.** 2,000 mixed requests at 50-way concurrency all returned the correct status. A single process scales to roughly 28k requests/s on one core, with sub-millisecond sequential latency.
-- ✅ **Security posture.** SQL, XSS, template and command-injection payloads in the path or query are never reflected. Prototype-member keys never dispatch. In a browser, `/hello` and `/unknown` render plain text only, and no script runs.
+- ✅ **Security posture.** In headless Chrome, `/hello` and `/unknown` render as plain text in a single `<pre>`. A `<script>` path returns `Not found` without echoing the path, no dialog opens, and the console shows no JavaScript errors. Injection payloads in the path or query are never reflected, prototype-member keys never dispatch, and no `Server`, `X-Powered-By` or `Set-Cookie` header is sent.
 - ⚠ **Process lifecycle.** Stopping the whole process group (`kill -- -<pid>`) frees the port. Signalling only npm's PID leaves `node index.js` holding the port, and the next start then exits with `EADDRINUSE`. There is no graceful shutdown, as the AAP excludes it.
 - ⚠ **Pipelined and mis-framed requests.** If one write carries two or more valid requests followed by a malformed one, only the first response is delivered, with no `400`. Some invalid `Transfer-Encoding` framings receive the app's `404` before Node closes the connection. Both are Node defaults, and the process never fails.
-- **Never exercised at runtime:** Node 22.x/24.x, HTTPS or TLS termination, a committed second route, shutdown with a request in flight, and npm's update notifier on a networked host.
+- **Never exercised at runtime:** Node 22.x/24.x, HTTPS or TLS termination, the merged `main`, a committed second route, shutdown with a request in flight, and npm's update notifier on a networked host.
 
 # 5. Compliance & Quality Review
 
@@ -136,30 +139,31 @@ Every flow below was driven against the running server, started with `npm start`
 
 | # | Deliverable | Benchmark | Status | Progress | Evidence |
 |---|---|---|---|---|---|
-| 1 | Three-file project (R1) | Exactly `index.js`, `package.json`, `README.md`, and none of the excluded artifacts | ✅ PASS | ██████████ 100% | `git diff --name-status origin/main...HEAD` shows 3 × `A`. No lockfile, `node_modules`, tests, CI, `.env` or Docker files |
+| 1 | Three-file project (R1) | Exactly `index.js`, `package.json`, `README.md`, and none of the excluded artifacts | ✅ PASS | ██████████ 100% | `ls -A hello-world-node` lists exactly the three files. No lockfile, `node_modules`, tests, CI, `.env` or Docker files in `git ls-files` |
 | 2 | Runtime and modules (R2) | Node ≥20, CommonJS, `node:http` only, no `npm install` | ✅ PASS | ██████████ 100% | `index.js:1` is the only `require`. `package.json` has no `type` and no dependencies |
-| 3 | Routing and dispatch (R3, R4) | One-line `"METHOD /path"` handlers, exact-key lookup, plain `if`, `404` fallback, no `try/catch` | ✅ PASS | ██████████ 100% | `index.js:3–9`. Line 7 matches the plan verbatim |
+| 3 | Routing and dispatch (R3, R4) | One-line `"METHOD /path"` handlers, exact-key lookup, plain `if`, `404` fallback, no `try/catch` | ✅ PASS | ██████████ 100% | `index.js:3–9`. Lines 4 and 7 match the plan verbatim (`cmp`) |
 | 4 | Listener (R5) | Direct `listen()`, nothing exported | ✅ PASS | ██████████ 100% | `index.js:10` matches the plan verbatim. No `module.exports` |
 | 5 | Port and startup log (R6) | `PORT` with default `3000`, exact log line as the last line | ✅ PASS | ██████████ 100% | `index.js:2`, `index.js:10`. Definition of Done checks 1, 3 and 4 |
-| 6 | Behaviour contract (R7, implicit content type and bodies) | User Behavior and "Bad and malformed requests" tables; server never stops responding | ✅ PASS | ██████████ 100% | Checks 5–8, 12 supplementary assertions, 8 hostile payloads with liveness 8/8 |
-| 7 | Manifest (R8) | Byte-for-byte the user's JSON | ✅ PASS | ██████████ 100% | `cmp` is identical (11 lines, 251 bytes, LF) |
-| 8 | README (R9) | Only the Run and Try it sections, exact text and fencing | ✅ PASS | ██████████ 100% | `hello-world-node/README.md`, 2 headings. Check 4 output matches |
+| 6 | Behaviour contract (R7, implicit content type and bodies) | User Behavior and "Bad and malformed requests" tables; server never stops responding | ✅ PASS | ██████████ 100% | Checks 5–8, 10 supplementary assertions, 7 edge probes, 8 hostile payloads with the same PID serving after each |
+| 7 | Manifest (R8) | Byte-for-byte the user's JSON | ✅ PASS | ██████████ 100% | `cmp` is identical (11 lines, 251 bytes, LF; blob `de9ee2f`) |
+| 8 | README (R9) | Only the Run and Try it sections, exact text and fencing | ✅ PASS | ██████████ 100% | `hello-world-node/README.md` is blob `d71856c` (29 lines, 485 bytes), with 2 headings, 3 `sh` blocks and 1 `text` block. Check 4 output matches |
 | 9 | Line budget and style (R10) | ≤10 lines; no blank lines, comments or `'use strict'`; LF | ✅ PASS | ██████████ 100% | `wc -l index.js` gives `10 index.js`. CR count 0 |
-| 10 | Definition of Done (R11) | All nine checks pass in the user's order | ✅ PASS | ██████████ 100% | 24/24 assertions in two identical runs |
+| 10 | Definition of Done (R11) | All nine checks pass in the user's order | ✅ PASS | ██████████ 100% | 27 of 27 acceptance-gate assertions pass (Section 3). The Section 9.4 script prints `PASS=15 FAIL=0` |
 | 11 | Extension contract (R12) | A new route is one `routes` line, and the listener is unchanged | ✅ PASS | ██████████ 100% | Single dispatch table with a trailing comma (`index.js:4`). No committed second route yet |
-| 12 | Scope boundaries (0.2.1, 0.8) | Only `GET /hello`. Root `README.md` and branch `One` untouched. Project on `main` | ⚠ PARTIAL | █████████░ 90% | Root `README.md` unchanged (17 bytes). `origin/One` = `0e301a6`. `/health` returns `404`. Merge into `main` pending |
+| 12 | Scope boundaries (0.2.1, 0.8) | Only `GET /hello`. Root `README.md` and branch `One` untouched. Project on `main` | ⚠ PARTIAL | █████████░ 90% | Root `README.md` identical to `main` (blob `2f98642`). `origin/One` = `0e301a6`. `/health` returns `404`. Merge of pull request #1 into `main` pending |
 
 ## 5.2 AAP & Rule Divergences and Gaps
 
-AAP 0.9 records no user-specified rules, so enterprise-standard best practice is the governing rule set. The AAP outranks it.
+AAP 0.9 records no user-specified rules, so enterprise-standard best practice is the governing rule set. The AAP outranks it, and the refine request outranks the AAP.
 
 | # | What the AAP/Rule Required | What Was Delivered Instead | Why It Diverged | Impact | Remediation |
 |---|---|---|---|---|---|
 | D1 | Best practice: run on a supported, patched runtime | Verified on Node v20.20.2, which has been EOL since 2026-04-30 and bundles llhttp 9.3.1 | **Sanctioned.** The AAP 0.3.1 pin outranks the Rules | Security exposure beyond local use | Re-run the Definition of Done on Node 22.x/24.x and adopt it (2 h) |
 | D2 | Best practice: document decisions in code | `index.js` has no comments | **Sanctioned.** AAP 0.7.2 forbids comments, and 0.2.3 spends all 10 lines on code | Minor maintainability cost | None; comments would fail check 9 |
 | D3 | Best practice: security headers, TLS, restricted bind, input validation, error handling, graceful shutdown, tests | Only `Content-Type` is sent; `listen(port)` binds all interfaces; `PORT` is not validated; no tests | **Sanctioned.** AAP 0.8.2 exclusions and the exact lines in 0.7.2 | Nil locally; material if exposed | Controls at the deployment layer (2 h) |
-| D4 | AAP 0.2.1: project "is created on `main`" | Commits are on branch `blitzy-12aed985-…`. `origin/main` is still at `0e301a6` | Delivered as a review branch for pull-request merge | `main` lacks the project until merge | Review and merge (1 h) |
+| D4 | AAP 0.2.1: project "is created on `main`" | Commits are on branch `blitzy-12aed985-…`, open as pull request #1. `main` is at `1cd5ea5` | Delivered as a review branch for pull-request merge | `main` lacks the project until merge | Review and merge (1 h) |
 | D5 | AAP 0.5.1: malformed requests get `400` and the server keeps serving | Accepted Node defaults beyond the documented resolution: lost pipelined responses, `404` before `400` on mis-framed bodies | AAP 0.1.2/0.8.2 forbid `clientError` listeners and `createServer` options | Possible desync behind a non-validating proxy; never a crash | Validating reverse proxy if fronted (in the 2 h deployment item) |
+| D6 | Commit `c621ac3` changed `hello-world-node/README.md` lines 3–4 after delivery | Commit `c6389dd` restores the AAP 0.2.3 bytes and drops that edit | **Sanctioned.** The refine request, read as conformance polish with no new scope | README renders correctly; the `c621ac3` edit is undone | Confirm at review (in the 1 h merge item) |
 
 **D1: Runtime currency.** Best practice calls for a supported runtime, but AAP 0.3.1 pins v20.20.2 and the AAP outranks the Rules. Node 20 reached end-of-life on 2026-04-30, and v20.20.2 (2026-03-24) is the last 20.x release. The Node.js project treats the 23 CVEs fixed in its June and July 2026 security releases as applying to end-of-life lines. They include CVE-2026-58044, a parser header-truncation desync that affects HTTP clients and forwarding proxies, roles this server does not play. On v20.20.2, llhttp 9.3.1 still accepts an empty `Transfer-Encoding` alongside `Content-Length`. The repository itself declares only `>=20` (`package.json:7`), so the fix needs no file change: choose a maintained LTS and re-run the Definition of Done.
 
@@ -167,9 +171,11 @@ AAP 0.9 records no user-specified rules, so enterprise-standard best practice is
 
 **D3: Production hardening excluded.** Best practice would add security headers, TLS, a loopback bind, `PORT` validation, startup-error handling, graceful shutdown and automated tests. AAP 0.8.2 excludes HTTPS, authentication, graceful shutdown, tests, `PORT` validation and `EADDRINUSE` handling, and AAP 0.7.2 fixes the exact handler and `listen()` lines. As a result, `index.js:4` and `index.js:9` send only `Content-Type`, `index.js:10` listens on all interfaces, and `index.js:2` forwards `PORT` unchanged (`PORT=0` logs `:0`). The impact is nil for a local tutorial and material for any public exposure. These controls belong at the deployment layer, such as a reverse proxy or firewall. The 10-line source contract should stay unchanged.
 
-**D4: Branch placement.** AAP 0.2.1 says `hello-world-node/` is created on `main`. The three commits (`5d8cac2` manifest, `260fd1a` server, `081eb9c` README) are on branch `blitzy-12aed985-76eb-4264-9349-84a90c6db706`, which is pushed to `origin`. `origin/main` still points at the initial commit `0e301a6`. The work is delivered as a review branch so that it reaches `main` through this pull request, and no file depends on the branch it lives on. Until the merge, anyone cloning `main` sees only the root `README.md`. Branch `One` is untouched, as the AAP requires. The fix is to review and merge (1 hour).
+**D4: Branch placement.** AAP 0.2.1 says `hello-world-node/` is created on `main`. The project's commits (`5d8cac2` manifest, `260fd1a` server, `081eb9c` README, `c6389dd` README restoration) are on branch `blitzy-12aed985-76eb-4264-9349-84a90c6db706`, pushed to `origin` and open as pull request #1. `main` has since moved to `1cd5ea5`, which gives the root `README.md` the same content as `972d154` on this branch. The merge therefore leaves that file unchanged, and `git merge-tree` reports no conflicts. Until the merge, a clone of `main` has no `hello-world-node/`. Branch `One` is untouched at `0e301a6`. The fix is to review and merge (1 hour).
 
 **D5: Node-default edge behaviours.** AAP 0.5.1 resolves the case of one valid request pipelined with a malformed one. Runtime probing found two further Node 20 defaults, and both were accepted. First, when two or more valid requests and a malformed one arrive in a single write, only the first response is delivered, with no `400`, and the connection closes. Second, some invalid `Transfer-Encoding` or chunk framings reach the listener and receive `404` (sometimes followed by `400`) before Node closes the connection. Changing either would need a `clientError` listener or `createServer` options, which AAP 0.1.2 and 0.8.2 forbid. Nothing is smuggled, and the process never fails. If the server is fronted, use a request-validating proxy.
+
+**D6: README edit reverted.** Commit `c621ac3` changed `hello-world-node/README.md` after delivery: it added a trailing space to line 3 (``From the `hello-world-node` directory:``) and inserted the line `''''sh`. The refine request repeated "refnie PR" and named no file, value or behaviour, so it was read as "refine the PR": bring the deliverable back to exact AAP 0.2.3 conformance and add nothing. Commit `c6389dd` therefore restores the file byte-identical to the specified content (blob `d71856c`, 29 lines, 485 bytes). `''''sh` is not a valid fence, and it rendered as literal text above the `npm start` block. No other file changed. If the edit was intentional, say so explicitly in the next request.
 
 # 6. Risk Assessment
 
@@ -189,7 +195,7 @@ AAP 0.9 records no user-specified rules, so enterprise-standard best practice is
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"pie1":"#5B39F3","pie2":"#FFFFFF","pieStrokeColor":"#B23AF2","pieOuterStrokeColor":"#B23AF2","pieSectionTextColor":"#B23AF2","pieTitleTextColor":"#B23AF2"}}}%%
 pie showData title Project Hours Breakdown
-    "Completed Work" : 18
+    "Completed Work" : 19
     "Remaining Work" : 6
 ```
 
@@ -204,7 +210,7 @@ pie showData title Remaining Work by Priority
 
 | Remaining category (Section 2.2) | Hours | Priority |
 |---|---|---|
-| Review and merge into `main` | 1 | High |
+| Review and merge pull request #1 into `main` | 1 | High |
 | Runtime currency on a maintained Node LTS | 2 | High |
 | Deployment isolation and edge hardening | 2 | Medium |
 | Process-supervision runbook | 1 | Medium |
@@ -212,13 +218,13 @@ pie showData title Remaining Work by Priority
 
 # 8. Summary & Recommendations
 
-The project is **75% complete**: 18 of 24 hours. Every AAP-specified deliverable is in place and verified. `hello-world-node/` holds exactly the three planned files. `index.js` is 10 lines and matches the plan's lines 4, 7 and 10 verbatim. `package.json` is byte-identical to the user's JSON, and `README.md` carries only the Run and Try it sections. All twelve stated requirements (R1–R12) are met, and none is open.
+The project is **76% complete**: 19 of 25 hours. Every AAP-specified deliverable is in place and verified. `hello-world-node/` holds exactly the three planned files. `index.js` is 10 lines and matches the plan's lines 4, 7 and 10 verbatim. `package.json` is byte-identical to the user's JSON, and `README.md` is byte-identical to its specified Run and Try it content. All twelve stated requirements (R1–R12) are met, and none is open. The refine request is delivered as a conformance-only change: one README edit and nothing added.
 
-Verification was run against the live server on the pinned Node v20.20.2. All nine Definition of Done checks and all nine supplementary contract checks pass: 36 assertions, plus 10 edge and hygiene probes, in two identical runs. Static checks pass 13 of 13. A 2,000-request concurrent load returned the correct status every time, and eight hostile raw payloads left the same process serving `GET /hello`. Wider probing found no reflection or dispatch outside the `routes` table, and plain-text-only rendering in a browser. That probing covered injection, prototype keys, smuggling attempts, header attacks and DoS.
+Verification was run against the live server on the pinned Node v20.20.2. The 27-assertion acceptance gate passes in full: all nine Definition of Done checks, all nine supplementary contract checks, and the lifecycle and hygiene checks. Seven edge probes, eight hostile raw payloads and 13 static checks also pass, and a 2,000-request concurrent load returned the correct status every time. In headless Chrome, responses render as plain text only, a script-tag path is not echoed, and no JavaScript error occurs.
 
-The remaining 6 hours are path-to-production work. The critical path has two steps: merge the branch into `main` (1 h), then re-run the Definition of Done on a maintained Node LTS and adopt it (2 h). Node 20 is end-of-life, and post-EOL CVEs plus llhttp parser fixes are absent from v20.20.2. The AAP pins that version, and that acceptance is the most material open caveat. After those steps come deployment controls the AAP deliberately keeps out of the source (2 h): TLS, security headers and request validation at a reverse proxy, or a loopback/firewall restriction. The last item is a short supervision runbook (1 h), so the process group is always stopped as a unit.
+The remaining 6 hours are path-to-production work. The critical path has two steps. First, review pull request #1, confirm the README restoration (Section 5.2, D6) and merge it into `main` (1 h); the branch merges without conflicts. Second, re-run the Definition of Done on a maintained Node LTS and adopt it (2 h). Node 20 is end-of-life, and post-EOL CVEs plus llhttp parser fixes are absent from v20.20.2. The AAP pins that version, and that acceptance is the most material open caveat. After those steps come deployment controls the AAP deliberately keeps out of the source (2 h): TLS, security headers and request validation at a reverse proxy, or a loopback/firewall restriction. The last item is a short supervision runbook (1 h), so the process group is always stopped as a unit.
 
-Success metrics for release: on the production runtime, the Section 9.4 script prints `PASS=15 FAIL=0`, the Section 9.5 commands give their annotated outputs, and `wc -l index.js` prints `10 index.js`. `git status` must show no lockfile or `node_modules`.
+Success metrics for release: on the production runtime and on the merged `main`, the Section 9.4 script prints `PASS=15 FAIL=0`, the Section 9.5 commands give their annotated outputs, and `wc -l index.js` prints `10 index.js`. `git status` must show no lockfile or `node_modules`.
 
 **Production readiness:** ready as a local tutorial today. It is not ready for internet exposure until the runtime is moved to a maintained LTS and the deployment-layer controls in Section 2.2 are in place. Neither step requires changing any of the three project files.
 
@@ -346,10 +352,12 @@ Responses also carry Node's framing headers (`Date`, `Connection: keep-alive`, `
 
 | Symptom | Cause | Resolution |
 |---|---|---|
-| `npm error enoent ... package.json` (exit 254) | `npm start` was run from the repository root | `cd hello-world-node` first |
+| `npm error code ENOENT ... package.json` (exit 254) | `npm start` was run from the repository root | `cd hello-world-node` first |
 | `Error: listen EADDRINUSE: address already in use :::3000` (exit 1) | The port is held, often by an orphaned `node index.js` after only npm's PID was killed | Find the owner with `lsof -ti :3000` and stop it. In future, stop with `kill -- -<pgid>` |
+| `kill -- -"$S"` reports `No such process` and the port stays bound | `$S` came from a backgrounded compound command (for example `cd x && setsid npm start &`), so it is the subshell's PID, not the group leader's | Run `cd` as a separate command before `setsid npm start &`, or find the group with `ps -o pgid= -p "$(lsof -ti :3000)"` and stop that |
 | `node --version` prints v22 or another version | Another Node is earlier on `PATH` | Re-export `PATH` as in Section 9.2 |
 | `curl: (7) Failed to connect` | The server is not running, or it is on another `PORT` | Check `tail -n 1` of the log for the listening URL |
+| `curl` prints a progress table before `Hello world` | curl shows its progress meter on stderr when stdout is not a terminal | Add `-s`, or run it in a terminal as the README shows |
 | A `package-lock.json` or `node_modules/` appeared | `npm install` was run | Delete both. The project must contain only its three files |
 | `nc` hangs after a response | Keep-alive holds the connection for ~5 s | Add `Connection: close` to the raw request, or wrap with `timeout 10` |
 
@@ -366,9 +374,11 @@ Responses also carry Node's framing headers (`Date`, `Connection: keep-alive`, `
 | Start (custom port) | `PORT=8080 npm start` (`hello-world-node/`) |
 | Background start | `LOG=$(mktemp); setsid npm start > "$LOG" 2>&1 & S=$!` (`hello-world-node/`) |
 | Stop background server | `kill -- -"$S"` |
+| Find the process group holding a port | `ps -o pgid= -p "$(lsof -ti :3000)"` |
 | Definition of Done | `bash "$DOD"` (repository root; script in Section 9.4) |
 | Isolated run on a shared host | `timeout 300 unshare --net bash -c 'ip link set lo up && bash "$0"' "$DOD"` |
-| Changes on this branch | `git diff --stat origin/main...blitzy-12aed985-76eb-4264-9349-84a90c6db706` |
+| Changes on this branch since the merge base | `git diff --stat origin/main...blitzy-12aed985-76eb-4264-9349-84a90c6db706` (6 files, +4,902/−1) |
+| Net change against current `main` | `git diff --stat origin/main blitzy-12aed985-76eb-4264-9349-84a90c6db706` (5 added files, +4,901) |
 
 ## B. Port Reference
 
@@ -385,7 +395,8 @@ Responses also carry Node's framing headers (`Date`, `Connection: keep-alive`, `
 | `hello-world-node/index.js` | Server: preamble (lines 1–2), `routes` table (3–5), request listener (6–9), `listen()` and startup log (10) |
 | `hello-world-node/package.json` | Manifest: name, version, `private`, `engines.node >=20`, `scripts.start` |
 | `hello-world-node/README.md` | Run and Try it instructions |
-| `README.md` (root) | Repository title, `# OnetwoforOct526`. Unchanged |
+| `README.md` (root) | Repository title file, identical to `main`. Not part of the project |
+| `blitzy/documentation/` | Project guide and technical specification documents that accompany the branch. Not part of the project |
 
 ## D. Technology Versions
 
